@@ -45,9 +45,30 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         MaterialStateProperty.all<Color>(Colors.green),
                   ),
                   onPressed: () {
-                      uploadImage();
-                      Navigator.pop(context);
-                    
+                    setState(() {
+                      
+                        if (_cveController.text.isEmpty) {
+                        mensajeC = true;
+                      } else {
+                        mensajeC = false;
+
+                        if (_nombreController.text.isEmpty) {
+                          mensajeN = true;
+                        } else {
+                          mensajeN = false;
+
+                          if (_descController.text.isEmpty) {
+                            mensajeD = true;
+                          } else {
+                            mensajeD = false;
+
+                            uploadImage();
+                            Navigator.pop(context);
+                          }
+                        }
+                      }
+
+                    });      
                   }
               )
             )
